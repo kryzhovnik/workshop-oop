@@ -4,7 +4,8 @@ The utility to accepts atom or rss feed, manipulates it some kind and returns th
 
 Run it:
 
-    bin/convert-feed --out atom source.xml
+    bin/convert-feed.rb --out atom source.xml
+    bin/convert-feed.rb --out atom https://ru.hexlet.io/lessons.rss
 
 **Options**
 

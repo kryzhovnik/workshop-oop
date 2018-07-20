@@ -1,9 +1,9 @@
 module ConvertFeed
   class Converter
-    attr_reader :code, :output
+    attr_reader :code, :options
 
-    def initialize(code:, output:)
-      @code, @output = code, output
+    def initialize(code:, options:)
+      @code, @options = code, options
     end
 
     def convert
