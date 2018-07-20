@@ -17,6 +17,4 @@ options[:source] = ARGV[0]
 raise OptionParser::MissingArgument if options[:out].nil?
 raise OptionParser::MissingArgument if options[:source].nil?
 
-# require File.expand_path("../../lib/convert_feed", __FILE__)
-
 ConvertFeed.run(options)
