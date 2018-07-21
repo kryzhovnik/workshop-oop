@@ -6,6 +6,7 @@ module ConvertFeed
 
     def self.get(code)
       doc = Nokogiri::XML(code)
+      doc.remove_namespaces!
 
       parser_type = if rss?(doc)
         Parser::RSS
@@ -20,11 +21,11 @@ module ConvertFeed
 
     private
       def self.rss?(doc)
-        !!doc.at_xpath('//rss')
+        !!doc.at_xpath('/rss')
       end
 
       def self.atom?(doc)
-        !!doc.xpath('//xmlns:feed')
+        !!doc.xpath('/feed')
       end
   end
 end

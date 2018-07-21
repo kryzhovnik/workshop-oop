@@ -3,8 +3,7 @@ module ConvertFeed::Parser
     attr_reader :doc
 
     def initialize(doc)
-      @doc = doc.clone
-      @doc.remove_namespaces!
+      @doc = doc
     end
 
     def parse
