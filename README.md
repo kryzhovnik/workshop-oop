@@ -4,7 +4,16 @@ The utility accepts atom or rss feed, manipulates it some kind and returns the r
 
 Run it:
 
+Source from standart input
+
+    cat source.xml | bin/convert-feed.rb --out atom
+
+File
+
     bin/convert-feed.rb --out atom source.xml
+
+Http
+
     bin/convert-feed.rb --out atom https://ru.hexlet.io/lessons.rss
 
 **Options**

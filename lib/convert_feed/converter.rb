@@ -1,13 +1,13 @@
 module ConvertFeed
   class Converter
-    attr_reader :code, :options
+    attr_reader :options
 
-    def initialize(code:, options:)
-      @code, @options = code, options
+    def initialize(options)
+      @options = options
     end
 
-    def convert
-      @code
+    def convert(code)
+      code
     end
   end
 end
