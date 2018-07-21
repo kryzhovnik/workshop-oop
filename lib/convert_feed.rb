@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'nokogiri'
 
 $LOAD_PATH.unshift(File.expand_path('..', __FILE__))
 
@@ -11,8 +12,7 @@ module ConvertFeed
 
     code = Reader.new.read(source)
     converter = Converter.new(options)
-    result = converter.convert(code)
 
-    STDOUT.puts result
+    converter.convert(code)
   end
 end

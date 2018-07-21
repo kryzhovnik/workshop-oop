@@ -25,4 +25,5 @@ options[:source] = ARGV[0]
 # raise OptionParser::MissingArgument if options[:source].nil?
 raise OptionParser::MissingArgument if options[:out].nil?
 
-ConvertFeed.run(options)
+result = ConvertFeed.run(options)
+STDOUT.puts result
