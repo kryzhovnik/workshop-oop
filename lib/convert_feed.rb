@@ -8,7 +8,7 @@ module ConvertFeed
   def self.run(options)
     source = options.delete(:source)
 
-    code = SimpleReader.new.read(source)
+    code = Reader.new.read(source)
     converter = Converter.new(options)
     result = converter.convert(code)
 
