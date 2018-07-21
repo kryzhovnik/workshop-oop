@@ -1,10 +1,11 @@
 require 'open-uri'
 
-require_relative 'convert_feed/reader'
-require_relative 'convert_feed/simple_reader'
-require_relative 'convert_feed/converter'
+$LOAD_PATH.unshift(File.expand_path('..', __FILE__))
 
 module ConvertFeed
+  autoload :Reader,       'convert_feed/reader'
+  autoload :Converter,    'convert_feed/converter'
+
   def self.run(options)
     source = options.delete(:source)
 
