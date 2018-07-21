@@ -4,8 +4,10 @@ require 'nokogiri'
 $LOAD_PATH.unshift(File.expand_path('..', __FILE__))
 
 module ConvertFeed
-  autoload :Reader,       'convert_feed/reader'
-  autoload :Converter,    'convert_feed/converter'
+  autoload :Reader,    'convert_feed/reader'
+  autoload :Converter, 'convert_feed/converter'
+  autoload :Feed,      'convert_feed/feed'
+  autoload :Parser,    'convert_feed/parser'
 
   def self.run(options)
     source = options.delete(:source)

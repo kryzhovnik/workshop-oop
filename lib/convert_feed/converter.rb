@@ -7,7 +7,11 @@ module ConvertFeed
     end
 
     def convert(code)
-      code
+      feed = Feed.new(code)
+
+      feed.sort(options[:sort]) if options[:sort]
+      feed.limit(options[:limit]) if options[:limit]
+      feed.export(options[:out])
     end
   end
 end
