@@ -16,7 +16,7 @@ module ConvertFeed
       limit: limit
     }
 
-    code = Reader.new.read(source)
+    code = Reader.read(source)
     converter = Converter.new(options)
 
     converter.convert(code)

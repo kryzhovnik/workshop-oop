@@ -1,5 +1,5 @@
 module ConvertFeed
-  class Reader
+  module Reader
     class STDINReader
       def self.can_use?(source)
         true

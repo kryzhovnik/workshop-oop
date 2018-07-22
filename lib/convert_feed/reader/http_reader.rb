@@ -1,7 +1,7 @@
 require 'open-uri'
 
 module ConvertFeed
-  class Reader
+  module Reader
     class HTTPReader
       def self.can_use?(source)
         source.is_a?(String) && source =~ URI::regexp

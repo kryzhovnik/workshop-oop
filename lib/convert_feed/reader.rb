@@ -1,5 +1,5 @@
 module ConvertFeed
-  class Reader
+  module Reader
     autoload :FileReader,  'convert_feed/reader/file_reader'
     autoload :HTTPReader,  'convert_feed/reader/http_reader'
     autoload :STDINReader, 'convert_feed/reader/stdin_reader'
@@ -14,7 +14,7 @@ module ConvertFeed
     register_type HTTPReader
     register_type STDINReader
 
-    def read(source)
+    def self.read(source)
       type = TYPES.find { |t| t.can_use?(source) } or raise "Unrecognized source"
       type.new.read(source)
     end

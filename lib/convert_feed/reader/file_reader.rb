@@ -1,5 +1,5 @@
 module ConvertFeed
-  class Reader
+  module Reader
     class FileReader
       def self.can_use?(source)
         if source.is_a?(String)
