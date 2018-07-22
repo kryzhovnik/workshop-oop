@@ -9,8 +9,12 @@ module ConvertFeed
   autoload :Feed,      'convert_feed/feed'
   autoload :Parser,    'convert_feed/parser'
 
-  def self.run(options)
-    source = options.delete(:source)
+  def self.run(source:, output: nil, sort: nil, limit: nil)
+    options = {
+      output: output,
+      sort: sort,
+      limit: limit
+    }
 
     code = Reader.new.read(source)
     converter = Converter.new(options)
