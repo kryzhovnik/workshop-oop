@@ -7,10 +7,13 @@ module ConvertFeed
     end
 
     def convert(code)
-      feed = Feed.new(code)
+      parser = Parser.get(code)
+      tree = parser.parse
 
+      feed = Feed.new(tree)
       feed.sort(options[:sort]) if options[:sort]
       feed.limit(options[:limit]) if options[:limit]
+
       feed.export(options[:out])
     end
   end

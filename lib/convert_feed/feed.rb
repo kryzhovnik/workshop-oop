@@ -1,8 +1,7 @@
 module ConvertFeed
   class Feed
-    def initialize(code)
-      parser = Parser.get(code)
-      @tree = parser.parse
+    def initialize(tree)
+      @tree = tree
     end
 
     def export(format)
