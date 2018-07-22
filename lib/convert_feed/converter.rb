@@ -8,13 +8,15 @@ module ConvertFeed
 
     def convert(code)
       parser = Parser.get(code)
+      format = options[:format] || parser.format
+
       tree = parser.parse
 
       feed = Feed.new(tree)
       feed.sort(options[:sort]) if options[:sort]
       feed.limit(options[:limit]) if options[:limit]
 
-      feed.export(options[:out])
+      feed.export(format)
     end
   end
 end

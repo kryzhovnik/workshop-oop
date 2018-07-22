@@ -8,10 +8,11 @@ module ConvertFeed
   autoload :Converter, 'convert_feed/converter'
   autoload :Feed,      'convert_feed/feed'
   autoload :Parser,    'convert_feed/parser'
+  autoload :Renderer,  'convert_feed/renderer'
 
-  def self.run(source:, output: nil, sort: nil, limit: nil)
+  def self.run(source:, format: nil, sort: nil, limit: nil)
     options = {
-      output: output,
+      format: format,
       sort: sort,
       limit: limit
     }

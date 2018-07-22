@@ -25,6 +25,14 @@ module ConvertFeed::Parser
       }
     end
 
+    def self.format
+      name.match(/([^:]+)\Z/)[1].downcase
+    end
+
+    def format
+      self.class.format
+    end
+
     private
       def first_text(node, name)
         first_node = first(node, name)

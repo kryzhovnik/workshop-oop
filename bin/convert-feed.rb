@@ -27,7 +27,7 @@ raise OptionParser::MissingArgument if options[:out].nil?
 
 result = ConvertFeed.run(
   source: options[:source],
-  output: options[:out],
+  format: options[:out],
   sort: options[:sort],
   limit: options[:limit]
 )

@@ -5,7 +5,8 @@ module ConvertFeed
     end
 
     def export(format)
-      @tree
+      renderer = Renderer.get(format)
+      renderer.render(@tree)
     end
 
     def sort(direction); end
