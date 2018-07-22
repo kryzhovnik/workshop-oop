@@ -4,19 +4,29 @@ module ConvertFeed
     autoload :HTTPReader,  'convert_feed/reader/http_reader'
     autoload :STDINReader, 'convert_feed/reader/stdin_reader'
 
-    TYPES = []
+    def self.read(source)
+      type = if file?(source)
+        FileReader
+      elsif http?(source)
+        HTTPReader
+      else
+        STDINReader
+      end
 
-    def self.register_type(type)
-      TYPES << type
+      type.read(source)
     end
 
-    register_type FileReader
-    register_type HTTPReader
-    register_type STDINReader
+    def self.file?(source)
+      if source.is_a?(String)
+        path = ::File.expand_path(source)
+        ::File.exists?(path)
+      else
+        false
+      end
+    end
 
-    def self.read(source)
-      type = TYPES.find { |t| t.can_use?(source) } or raise "Unrecognized source"
-      type.new.read(source)
+    def self.http?
+      source.is_a?(String) && source =~ URI::regexp
     end
   end
 end
