@@ -5,28 +5,32 @@ module ConvertFeed
     autoload :STDINReader, 'convert_feed/reader/stdin_reader'
 
     def self.read(source)
-      type = if file?(source)
-        FileReader
-      elsif http?(source)
-        HTTPReader
-      else
-        STDINReader
-      end
-
+      type = choose_type(source)
       type.read(source)
     end
 
-    def self.file?(source)
-      if source.is_a?(String)
-        path = ::File.expand_path(source)
-        ::File.exists?(path)
-      else
-        false
+    private
+      def self.choose_type(source)
+        if file?(source)
+          FileReader
+        elsif http?(source)
+          HTTPReader
+        else
+          STDINReader
+        end
       end
-    end
 
-    def self.http?
-      source.is_a?(String) && source =~ URI::regexp
-    end
+      def self.file?(source)
+        if source.is_a?(String)
+          path = ::File.expand_path(source)
+          ::File.exists?(path)
+        else
+          false
+        end
+      end
+
+      def self.http?(source)
+        source.is_a?(String) && source =~ URI::regexp
+      end
   end
 end
